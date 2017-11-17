@@ -101,8 +101,8 @@ let authCntrl = {
 				let smtpTransport = mailer.createTransport({
 					service: 'Gmail',
 					auth: {
-						user: config.localEnv.auth.user,
-						pass: config.localEnv.auth.pass
+						user: (config.localEnv.auth.user || process.env.EMAIL_AUTH_USERNAME),
+						pass: (config.localEnv.auth.pass || process.env.EMAIL_AUTH_PASSWORD)
 					}
 				});
 

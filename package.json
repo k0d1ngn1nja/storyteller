@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "storyteller",
   "version": "1.0.0",
-  "description": "",
+  "description": "social medial application that allow users share short stories",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
