@@ -14,6 +14,7 @@ const passport = require('passport');
 const port = (process.env.PORT || 3000);
 const config = require('./app/config');
 const validator = require('express-validator');
+const isProduction =(process.env.NODE_ENV === 'production');
 const http = require('http').Server(app);
 
 // DB CONNECTION
@@ -29,7 +30,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true,
 	secret: config.localEnv.secret,
-	store: new SessionStore({url: config.productionEnv.db, autoReconnect: true})
+	store: new SessionStore({url: config.localEnv.db, autoReconnect: true})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
