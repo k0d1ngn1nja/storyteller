@@ -3,7 +3,7 @@ const localdb_name = "storyteller-app";
 
 module.exports = {
 	productionEnv: {
-		db: process.env.MONGODB,
+		db: process.env.MONGODB_URI,
 		secret: process.env.SECRET,
 		auth: {
 			user: process.env.GMAIL_EMAIL,
