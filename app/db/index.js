@@ -6,12 +6,12 @@ const isProduction =(process.env.NODE_ENV === 'production');
 mongoose.Promise = global.Promise;
 
 if(isProduction){
-	mongoose.connect(config.productionEnv.db, function(err) {		
+	mongoose.connect(config.productionEnv.db, {useMongoClient: true}, function(err) {		
   	if (err) console.log(err);
   	console.log("Connected to remote database");
 	});
 } else {
-	mongoose.connect(config.localEnv.db, (err) => {
+	mongoose.connect(config.localEnv.db, {useMongoClient: true}, (err) => {
 		if(err) console.log("Mongoose connection error occurred ", err);
 		console.log('Connected to local database');
 	});
