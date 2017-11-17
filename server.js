@@ -29,7 +29,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true,
 	secret: config.localEnv.secret,
-	store: new SessionStore({url: (config.localEnv.db || config.productionEnv.db), autoReconnect: true})
+	store: new SessionStore({url: config.productionEnv.db, autoReconnect: true})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
