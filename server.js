@@ -29,7 +29,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true,
 	secret: config.localEnv.secret,
-	store: new SessionStore({url: config.localEnv.db, autoReconnect: true})
+	store: new SessionStore({url: (config.localEnv.db || config.productionEnv.db), autoReconnect: true})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -38,9 +38,6 @@ app.use(flash());
 // SETTING CURRENT USER & FLASH 
 app.use(function(req, res, next){
 	res.locals.currentuser = req.user;
-	// res.locals.success = req.flash('progress');
-	// res.locals.info = req.flash('info');
-	// res.locals.errors = req.flash('errors');
 	next();
 });
 
