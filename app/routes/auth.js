@@ -15,6 +15,8 @@ router.get('/auth/facebook/callback', authCntrl.facebookCB);
 
 router.get('/auth/google', authCntrl.google);
 
+router.get('/auth/google/callback', authCntrl.googleCB);
+
 router.get('/logout', authCntrl.logout);
 
 router.get('/forgotpassword', authCntrl.forgot);

@@ -61,15 +61,17 @@ passport.use('facebook', new FacebookStrategy({
 }));
 
 // GOOGLE LOGIN
-passport.use(new GoogleStrategy({
-    clientID:     process.env.GOOGLE_CLIENT_ID,
+passport.use(new GoogleStrategy(
+{
+    clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback",
-    passReqToCallback: true
-  },
-  function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
+    passReqToCallback: true,
+    proxy: true
+  }, function(request, accessToken, refreshToken, profile, done){
+    	// User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    	// return done(err, user);
+    	console.log(accessToken);
+    	console.log(profile);
+    }
 ));

@@ -60,6 +60,14 @@ let authCntrl = {
 		failureFlash: true
 	}),
 
+	google: passport.authenticate('google', {scope: ['profile', 'email']}),
+
+	googleCB: passport.authenticate('google', {
+		successRedirect: '/',
+		failureRedirect: '/login',
+		failureFlash: true
+	}),
+
 	logout: function(req, res, next){
 		req.logout();
 		req.flash('progress', 'Logout was successful.');
