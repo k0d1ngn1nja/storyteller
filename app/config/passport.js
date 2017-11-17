@@ -3,6 +3,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const User = require('../models/user');
 
 // stores user id in session
@@ -32,7 +33,7 @@ passport.use('local-login', new LocalStrategy({
 }));
 
 // FACEBOOK LOGIN
-passport.use(new FacebookStrategy({
+passport.use('facebook', new FacebookStrategy({
 	clientID: process.env.FACEBOOK_APP_ID,
 	clientSecret: process.env.FACEBOOK_APP_SECRET,
 	callbackURL: "http://localhost:3000/auth/facebook/callback",
@@ -58,3 +59,17 @@ passport.use(new FacebookStrategy({
 		}
 	});
 }));
+
+// GOOGLE LOGIN
+passport.use(new GoogleStrategy({
+    clientID:     process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback",
+    passReqToCallback: true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
