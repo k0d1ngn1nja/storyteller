@@ -29,7 +29,8 @@ let UserSchema = new Schema({
 	},
 	passwordResetToken: {type: String, default:''},
 	passwordResetExpires: {type: Date, default: Date.now},
-	facebookId: String
+	facebookId: String,
+	googleId: String
 });
 
 UserSchema.methods.encryptPWD = function(pwd){

@@ -29,8 +29,8 @@ app.use(cookieParser());
 app.use(session({
 	resave: true,
 	saveUninitialized: true,
-	secret: config.productionEnv.secret,
-	store: new SessionStore({url: config.productionEnv.db, autoReconnect: true})
+	secret: config.localEnv.secret,
+	store: new SessionStore({url: config.localEnv.db, autoReconnect: true})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
