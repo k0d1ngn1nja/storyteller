@@ -55,6 +55,7 @@ require('./app/models/user');
 app.use(require('./app/routes'));
 app.use(require('./app/routes/auth'));
 app.use(require('./app/routes/user'));
+app.use(require('./app/routes/story'));
 
 // ERROR HANDLING
 require('./app/config/error-handlers')(app);
