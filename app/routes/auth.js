@@ -11,11 +11,11 @@ router.get('/login', authCntrl.loginGET);
 
 router.get('/auth/facebook', authCntrl.facebook);
 
-router.get('/auth/facebook/callback', authCntrl.facebookCB);
+router.get('/auth/facebook/callback', authCntrl.facebookCB, v.successRedirect);
 
 router.get('/auth/google', authCntrl.google);
 
-router.get('/auth/google/callback', authCntrl.googleCB);
+router.get('/auth/google/callback', authCntrl.googleCB, v.successRedirect);
 
 router.get('/logout', authCntrl.logout);
 
@@ -23,7 +23,7 @@ router.get('/forgotpassword', authCntrl.forgot);
 
 router.get('/reset/:token', authCntrl.reset);
 
-router.post('/login', v.validateLogin, authCntrl.loginPOST);
+router.post('/login', v.validateLogin, authCntrl.loginPOST, v.successRedirect);
 
 router.post('/signup', v.validateSignup, authCntrl.signupPOST);
 

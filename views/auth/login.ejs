@@ -4,11 +4,17 @@
 			<% include ../flash/errors %>
 			
 			<div class="col-md-7">
-				<h1 class="page-header">Sign in</h1>
+				<h1 class="page-header">Login</h1>
 				<div class="myform">
-					<p><a href="/auth/facebook" class="btn btn-social btn-facebook btn-lg">
-						<i class="fa fa-facebook"></i>Facebook Login
-					</a></p>
+					<p>
+						<a href="/auth/facebook" class="btn btn-social btn-facebook btn-sm">
+							<i class="fa fa-facebook"></i>Facebook Login
+						</a>
+
+						<a href="/auth/google" class="btn btn-social btn-google btn-sm">
+							<i class="fa fa-google-plus"></i>Google Login
+						</a>
+					</p>
 
 					<form action="/login" method="post" accept-charset="utf-8">
 						<div class="form-group">

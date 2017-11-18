@@ -81,9 +81,29 @@ function validatedResetPwd(req, res, next){
 	}
 }
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  req.session.oldUrl = req.url;
+  req.flash('errors', 'Please login to continue.');
+  res.redirect('/login');
+}
+
+function successRedirect(req, res, next){
+	let oldUrl = req.session.oldUrl;
+	if(oldUrl){
+		req.session.oldUrl = null;
+		res.redirect(oldUrl);
+	} else {
+		res.redirect('/dashboard');
+	}
+}
 module.exports = {
 	validateSignup,
 	validateLogin,
 	validatedResetPwd,
-	validatedForgotPwd
+	validatedForgotPwd,
+	isLoggedIn,
+	successRedirect
 }

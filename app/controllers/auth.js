@@ -47,7 +47,6 @@ let authCntrl = {
 	},
 
 	loginPOST: passport.authenticate('local-login', {
-		successRedirect: '/',
 		failureRedirect: '/login',
 		failureFlash: true 
 	}),
@@ -55,7 +54,6 @@ let authCntrl = {
 	facebook: passport.authenticate('facebook', {scope: 'email'}),
 	
 	facebookCB: passport.authenticate('facebook', {
-		successRedirect: '/',
 		failureRedirect: '/login',
 		failureFlash: true
 	}),
@@ -63,7 +61,6 @@ let authCntrl = {
 	google: passport.authenticate('google', {scope: ['profile', 'email']}),
 
 	googleCB: passport.authenticate('google', {
-		successRedirect: '/',
 		failureRedirect: '/login',
 		failureFlash: true
 	}),
