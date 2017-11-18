@@ -61,7 +61,7 @@ passport.use('facebook', new FacebookStrategy({
 }));
 
 // GOOGLE LOGIN
-passport.use(new GoogleStrategy(
+passport.use('google', new GoogleStrategy(
 {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -71,13 +71,15 @@ passport.use(new GoogleStrategy(
     proxy: true
   }, function(request, accessToken, refreshToken, profile, done){
     User.findOne({googleId: profile.id}, function(err, user){
-			if(user || err){
-				return done(err, user);
+    	if(err) return done(err);
+			if(user) {
+				return done(null, user);
 			} else {
+
 				let new_user = new User();
 
 				new_user.email = profile.email;
-				new_user.facebookId = profile.id;
+				new_user.googleId = profile.id;
 				new_user.password = accessToken;
 				new_user.username = profile._json.nickname;
 				new_user.photo = profile.photos[0].value;

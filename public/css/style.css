@@ -53,6 +53,19 @@ section{
 .header-btns a:hover{
 	color: yellow;
 }
+
+.btn-bckToTop{
+	position: fixed;
+	bottom: 70px;
+	right: 20px;
+	padding: 5px 15px;
+	font-size: 150%;
+	font-weight: 700;
+	background-color: #fff;
+	color: red;
+	border-radius: 40px;
+	vertical-align: middle;
+}
 /*================
 LOGIN & SIGNUP PAGE
 =================*/
