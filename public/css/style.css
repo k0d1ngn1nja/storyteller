@@ -19,7 +19,6 @@ body{
 	color: #191919;
 	line-height: 27px;
 	padding-top: 30px;
-	/*padding-bottom: 50px;*/
 	letter-spacing: 0.5px;
 	text-rendering: optimizeLegibility;
 	font-family: 'Raleway', sans-serif;
@@ -43,7 +42,7 @@ p{
 
 section{
 	padding-top: 50px;
-	padding-bottom: 30px;
+	padding-bottom: 90px;
 }
 
 .header-btns a{
@@ -113,6 +112,23 @@ LOGIN & SIGNUP PAGE
 	font-size: 25rem;
 }
 
+.section_title{
+	text-align: center;
+	margin: 0 0 20px 0;
+}
+
+.section_title h3{
+	font-size: 350%;
+	font-weight: 300;
+}
+
+.section_title hr{
+  height: 3px;
+  opacity: 0.8;
+	width: 200px;
+  background-color: red;
+  margin: 0 auto 30px auto;
+}
 
 /*================
 HEADER SECTION
