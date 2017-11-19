@@ -2,11 +2,12 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Story = mongoose.model('Story');
+const h = require('../helpers');
 
 let storyCntrl = {
 	index: function(req, res, next){
 		Story.find().then((stories) =>{
-			res.render('story/index', {stories});
+			res.render('story/index', {stories, h});
 		});
 	},
 
