@@ -8,7 +8,7 @@ router.get('/stories/new', storyCntrl.new);
 
 router.get('/stories/:id/edit', storyCntrl.edit);
 
-router.get('/stories/:id', storyCntrl.show);
+router.get('/stories/show/:id', storyCntrl.show);
 
 router.post('/stories', storyCntrl.create);
 

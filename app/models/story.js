@@ -31,12 +31,15 @@ let storySchema = new Schema({
 			ref: 'User'
 		}
 	}, {timestamp: true}],
-	user: {
-		type: Schema.Types.ObjectId,
-		ref: 'User'
+	creator: {
+		id: {
+			type: Schema.Types.ObjectId,
+			ref: 'User'
+		},
+		username: String
 	}
 }, {timestamp: true});
 
 storySchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('Story', storySchema, 'Stories');
+module.exports = mongoose.model('Story', storySchema);

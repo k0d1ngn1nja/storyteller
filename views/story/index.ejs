@@ -1,1 +1,29 @@
-<h1>All Stories</h1>
+<section id="story_index_page">
+	<div class="container">
+		<div class="row">
+			<div class="section_title">
+				<h3>Public Stories</h3><hr>
+			</div>
+		</div><!--row-->
+
+		<div class="row">
+			<% if(stories && stories.length > 0) {%>
+				<% stories.forEach((story) =>{%>
+					<div class="col-md-4 col-sm-12">
+						<div class="panel panel-primary story-card">
+							<h3 class="text-center"><%= story.title %></h3>
+							<p><%- story.storyText %></p>
+							<ul class="story-card-meta">
+								<li><a href="/stories/show/<%=story.id%>" class="fa fa-eye fa-1x"></a> |</li>
+								<li><a href="/stories/<%=story.id%>/edit" class="fa fa-pencil fa-1x"></a> |</li>
+								<li><%= story.creator.username %></li>
+							</ul>
+						</div>
+					</div>
+				<%})%>
+			<%} else {%>
+				<h1>There are currently no public stories available</h1>
+			<%}%>
+		</div>
+	</div>
+</section>

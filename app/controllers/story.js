@@ -5,7 +5,9 @@ const Story = mongoose.model('Story');
 
 let storyCntrl = {
 	index: function(req, res, next){
-		res.render('story/index');
+		Story.find().then((stories) =>{
+			res.render('story/index', {stories});
+		});
 	},
 
 	new: function(req, res, next){
@@ -22,13 +24,16 @@ let storyCntrl = {
 		new_story.status = req.body.status;
 		new_story.allowcomment = allowcomment;
 		new_story.storyText = req.body.storyText;
-		new_story.user = req.user.id;
+		new_story.creator = {
+			id: req.user._id,
+			username: req.user.username
+		}
 
 		new_story.save().then((story) => {
 			req.flash('progress', "New story was created");
-			res.redirect(`/stories/${story._id}/show`);
+			res.redirect(`/stories/${story._id}`);
 		}).catch((err) =>{
-			req.flash('errors', err);
+			req.flash('errors', err.message);
 			res.redirect('back');
 		});
 	},
