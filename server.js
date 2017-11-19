@@ -50,6 +50,7 @@ app.use(express.static(__dirname + '/public'));
 
 // MODELS
 require('./app/models/user');
+require('./app/models/story');
 
 // ROUTES
 app.use(require('./app/routes'));
