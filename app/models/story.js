@@ -19,7 +19,7 @@ let storySchema = new Schema({
 	storyText: String,
 	allowcomment: {
 		type: Boolean,
-		default: true
+		default: false
 	},
 	comments: [{
 		text:{

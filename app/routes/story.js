@@ -10,7 +10,7 @@ router.get('/stories/:id/edit', storyCntrl.edit);
 
 router.get('/stories/:id', storyCntrl.show);
 
-// router.post('/stories', storyCntrl.create);
+router.post('/stories', storyCntrl.create);
 
 // router.put('/stories/:id', storyCntrl.update);
 
