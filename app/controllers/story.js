@@ -27,21 +27,29 @@ let storyCntrl = {
 		new_story.storyText = req.body.storyText;
 		new_story.creator = {
 			id: req.user._id,
-			username: req.user.username
+			username: req.user.username,
+			photo: req.user.photo
 		}
 
 		new_story.save().then((story) => {
 			req.flash('progress', "New story was created");
-			res.redirect(`/stories/${story._id}`);
+			res.redirect(`/stories`);
 		}).catch((err) =>{
 			req.flash('errors', err.message);
-			res.redirect('back');
+			res.redirect('/stories/new');
 		});
 	},
 
 	show: function(req, res, next){
 		let success = req.flash('progress');
-		res.render('story/show', {success});
+		let storyId = req.params.id;
+
+		Story.findOne({_id: storyId}).then((story) =>{
+			res.render('story/show', {success, story, h});
+		}).catch((err) =>{
+			req.flash('errors', err);
+			res.redirect('/stories');
+		});
 	},
 
 	edit: function(req, res, next){

@@ -36,9 +36,10 @@ let storySchema = new Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'User'
 		},
-		username: String
+		username: String,
+		photo: String
 	}
-}, {timestamp: true});
+}, {timestamps: true});
 
 storySchema.plugin(uniqueValidator);
 

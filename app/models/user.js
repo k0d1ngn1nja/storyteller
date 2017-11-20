@@ -31,7 +31,7 @@ let UserSchema = new Schema({
 	passwordResetExpires: {type: Date, default: Date.now},
 	facebookId: String,
 	googleId: String
-});
+}, {timestamps: true});
 
 UserSchema.methods.encryptPWD = function(pwd){
 	return bcrypt.hashSync(pwd);

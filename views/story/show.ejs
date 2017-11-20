@@ -3,6 +3,39 @@
 		<div class="row">
 			<% include ../flash/success %>
 			
+			<div class="col-md-12">
+				<div class="story-image">
+					<img src="<%= story.image %>" class="img-responsive">
+				</div>
+			</div><!--col12-->
+		</div><!--row-->
+
+		<div class="row">
+			<div class="col-md-9 well">
+				<div class="story-title">
+					<h3><%= story.title %></h3>
+					<ul class="story-card-meta">
+						<li><i class="fa fa-clock-o"></i> <%= h.formatDate(story.createdAt, 'MMMM Do YYYY') %> |</li>
+						<li><i class="fa fa-comment"></i> 3</li>
+					</ul>
+				</div><!--story-title-->
+
+				<div class="story-text">
+					<p><%- story.storyText %></p>
+				</div>
+			</div><!--col9-->
+
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="pnael-heading text-center">
+						<%= story.creator.username %>
+					</div>
+					<div class="user-image">
+						<img src="<%= story.creator.photo %>" class="img-responsive img-circle">
+					</div>
+					<a href="/stories/user/<%= story.creator.id %>">More from <%= story.creator.username %></a>
+				</div>
+			</div><!--col3-->
 		</div>
 	</div>
 </section>
