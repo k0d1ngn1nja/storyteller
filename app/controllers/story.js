@@ -62,7 +62,33 @@ let storyCntrl = {
 	},
 
 	update: function(req, res, next){
+		let storyId = req.params.id;
+		let allowcomment;
+		req.body.allowcomment ? allowcomment = true : allowcomment = false;
 
+		let story = {};
+		story.title = req.body.title;
+		story.status = req.body.status;
+		story.allowcomment = allowcomment;
+		story.storyText = req.body.storyText;
+		
+		Story.findOneAndUpdate(storyId, story, function(err){
+			if(err){
+				return console.log(err);
+			}
+			req.flash('progress', `${story.title} has been successfully updated.`);
+			res.redirect('/dashboard');
+		});
+	},
+
+	delete: function(req, res, next){
+		let storyId = req.params.id
+		Story.findByIdAndRemove({_id: storyId}).then(() =>{
+			req.flash('progress', "Story has been deleted.");
+			res.redirect('/dashboard');
+		}).catch((err) =>{
+			console.log(err);
+		});
 	}
 }
 

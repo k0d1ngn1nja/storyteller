@@ -15,12 +15,5 @@ module.exports = {
 
 	formatDate: function(date, format){
 		return moment(date).format(format);
-	},
-
-	getSelectedOption: function() {
-    let checkBox = document.querySelector('#commentCheckbox');
-    if(checkBox.checked){
-    	return true;
-    } 
 	}
 }

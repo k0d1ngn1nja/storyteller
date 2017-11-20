@@ -18,7 +18,13 @@
 								<td><a href="/stories/show/<%= story.id %>"><%= story.title %></a></td>
 								<td><%= h.formatDate(story.createdAt, 'MMMM Do YYYY') %></td>
 								<td><%= story.status %></td>
-								<td><a href="/stories/edit/<%= story.id %>" class="fa fa-pencil"></a>Edit</td>
+								<td>
+									<a href="/stories/edit/<%= story.id %>" class="fa fa-pencil"></a>
+
+									<form action="/stories/<%=story.id%>?_method=delete" method="post" id="deleteForm" style="display: inline">
+										<a href="#" class="fa fa-trash" onclick="document.querySelector('#deleteForm').submit()"></a>
+									</form>
+								</td>
 							</tr>
 						<% })%>
 					</tbody>

@@ -14,6 +14,7 @@ const passport = require('passport');
 const port = (process.env.PORT || 3000);
 const config = require('./app/config');
 const validator = require('express-validator');
+const methodOverride = require('method-override');
 const isProduction =(process.env.NODE_ENV === 'production');
 const http = require('http').Server(app);
 
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(validator());
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 app.use(session({
 	resave: true,
 	saveUninitialized: true,

@@ -14,4 +14,6 @@ router.post('/stories', v.isLoggedIn, storyCntrl.create);
 
 router.put('/stories/:id', v.isLoggedIn, storyCntrl.update);
 
+router.delete('/stories/:id', v.isLoggedIn, storyCntrl.delete);
+
 module.exports = router;
