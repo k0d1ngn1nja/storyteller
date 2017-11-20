@@ -1,1 +1,53 @@
-<h1>Edit Story</h1>
+<section id="new_story">
+	<div class="container">
+		<%# include ../flash/errors %>
+
+		<div class="section_title">
+			<h3><%= story.title %></h3><hr>
+		</div><!--section_title-->
+
+		<div class="row">
+			<div class="col-md-9 col-md-offset-1">
+				<div class="myform">
+					<form action="/stories/<%= story.id %>" method="post" accept-charset="utf-8">
+						<div class="form-group">
+					    <label for="title">Title</label>
+					    <input type="text" class="form-control" name="title" autofocus value="<%= story.title %>">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="status">Status</label>
+					    <select name="status" class="form-control">
+					    	<option selected><%= story.status %></option>
+							  <option value="draft">Draft</option>
+							  <option value="private">Private</option>
+							  <option value="public">Public</option>
+							</select>
+					  </div>
+
+					  <div class="form-group">
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="commentCheckbox" name="allowcomment"
+									<%= story.allowcomment ? 'checked' : '' %>
+							  >Allow comments
+							</label>
+					  </div>
+
+					  <div class="form-group">
+					  	<h4 for="storyText">Tell Us Your Story</h4>
+					  	<textarea name="storyText" class="form-control" cols="30" rows="10"><%= story.storyText %></textarea>
+					  </div>
+
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div><!--/myform-->
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	CKEDITOR.replace('storyText', {
+		plugins: 'wysiwygarea,toolbar,basicstyles,link'
+	});
+</script>

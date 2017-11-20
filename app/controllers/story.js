@@ -53,7 +53,16 @@ let storyCntrl = {
 	},
 
 	edit: function(req, res, next){
-		res.render('story/edit');
+		let storyId = req.params.id
+		Story.findOne({_id: storyId}).then((story) =>{
+			res.render('story/edit', {story, h});
+		}).catch((err) =>{
+			console.log(err);
+		});
+	},
+
+	update: function(req, res, next){
+
 	}
 }
 
