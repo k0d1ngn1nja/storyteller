@@ -184,6 +184,7 @@ STORY INDEX PAGE
 
 .story-card-meta{
 	padding: 0;
+	list-style: none;
 }
 
 .story-card-meta li{

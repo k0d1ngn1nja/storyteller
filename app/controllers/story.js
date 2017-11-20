@@ -6,7 +6,7 @@ const h = require('../helpers');
 
 let storyCntrl = {
 	index: function(req, res, next){
-		Story.find().then((stories) =>{
+		Story.find({'status': 'public'}).then((stories) =>{
 			res.render('story/index', {stories, h});
 		});
 	},

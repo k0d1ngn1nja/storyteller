@@ -2,6 +2,30 @@
 	<div class="container">
 		<div class="row">
 			<h1>Welcome <%= currentuser.username %></h1>
+			<% if(stories){ %>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Date</th>
+							<th>Status</th>
+							<th colspan="2">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% stories.forEach((story) =>{%>
+							<tr>
+								<td><a href="/stories/show/<%= story.id %>"><%= story.title %></a></td>
+								<td><%= h.formatDate(story.createdAt, 'MMMM Do YYYY') %></td>
+								<td><%= story.status %></td>
+								<td><a href="/stories/edit/<%= story.id %>" class="fa fa-pencil"></a>Edit</td>
+							</tr>
+						<% })%>
+					</tbody>
+				</table>		
+			<%} else {%>
+				<h1 class="text-center">You currently don't have any stories.</h1>
+			<%}%>
 		</div>
 	</div>
 </section>
